@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:text="Electricity Bill Calculator"
+        android:textAlignment="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#676767"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textStyle="bold">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Morning usage (kwh)"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/morningUsageInputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter the number of kwh of electricity usage"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textStyle="bold">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Afternoon usage (kwh)"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/afternoonUsageInputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter the number of kwh of electricity usage"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textStyle="bold">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Evening usage (kwh)"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/eveningUsageInputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter the number of kwh of electricity usage"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/renewableEnergySwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Uses renewable energy source?"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="calculate" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="reset" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="5dp"
+                    android:text="Charges Breakdown"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="#676767"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/morningUsage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="#676767" />
+
+                <TextView
+                    android:id="@+id/afternoonUsage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="#676767" />
+
+                <TextView
+                    android:id="@+id/eveningUsage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="#676767" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="20sp">
+
+                    <TextView
+                        android:id="@+id/totalUsage"
+                        android:layout_width="match_parent"
+                        android:layout_height="50sp"
+                        android:background="@color/teal_200"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10sp"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/saleTax"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="#676767" />
+
+                <TextView
+                    android:id="@+id/environmentRebate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="#676767" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="20sp">
+
+                    <TextView
+                        android:id="@+id/totalRegulatoryCharges"
+                        android:layout_width="match_parent"
+                        android:layout_height="50sp"
+                        android:background="@color/teal_200"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10sp"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="20sp">
+
+                    <TextView
+                        android:id="@+id/totalBillAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="50sp"
+                        android:background="@color/teal_700"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10sp"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,11 +1,13 @@
 package com.seneca.a2_hien_hnguyen110;
 
+import androidx.annotation.NonNull;
+
 public class Purchase {
     private String storeName;
-    private String purchaseAmount;
-    private String paidStatus;
+    private Double purchaseAmount;
+    private boolean paidStatus;
 
-    public Purchase(String storeName, String purchaseAmount, String paidStatus) {
+    public Purchase(String storeName, Double purchaseAmount, boolean paidStatus) {
         this.storeName = storeName;
         this.purchaseAmount = purchaseAmount;
         this.paidStatus = paidStatus;
@@ -19,19 +21,29 @@ public class Purchase {
         this.storeName = storeName;
     }
 
-    public String getPurchaseAmount() {
+    public Double getPurchaseAmount() {
         return purchaseAmount;
     }
 
-    public void setPurchaseAmount(String purchaseAmount) {
+    public void setPurchaseAmount(Double purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
     }
 
-    public String getPaidStatus() {
+    public boolean getPaidStatus() {
         return paidStatus;
     }
 
-    public void setPaidStatus(String paidStatus) {
+    public void setPaidStatus(boolean paidStatus) {
         this.paidStatus = paidStatus;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "storeName='" + storeName + '\'' +
+                ", purchaseAmount=" + purchaseAmount +
+                ", paidStatus=" + paidStatus +
+                '}';
     }
 }

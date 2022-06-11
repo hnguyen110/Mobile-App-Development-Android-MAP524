@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.seneca.a2_hien_hnguyen110.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    private ArrayList<Purchase> purchases = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 binding.errorMessage.setVisibility(View.GONE);
                 binding.errorMessage.setText("");
+                Purchase purchase = new Purchase(storeName, Double.valueOf(purchaseAmount), paidStatus);
+                purchases.add(purchase);
             }
         });
     }

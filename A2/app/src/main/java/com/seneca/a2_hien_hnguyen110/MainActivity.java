@@ -36,5 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 purchases.add(purchase);
             }
         });
+
+        binding.loadDataButton.setOnClickListener(view -> {
+            purchases.add(new Purchase("The Beer Store", 50.5, true));
+            purchases.add(new Purchase("No Frills", 80.5, true));
+            purchases.add(new Purchase("Shoppers Drug Mart", 50.35, true));
+            purchases.add(new Purchase("Seneca College", 7000.75, false));
+            purchases.add(new Purchase("Starbucks", 10.64, true));
+        });
     }
 }

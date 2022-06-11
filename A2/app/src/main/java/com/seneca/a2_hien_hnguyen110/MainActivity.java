@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.seneca.a2_hien_hnguyen110.databinding.ActivityMainBinding;
+import com.seneca.a2_hien_hnguyen110.models.Purchase;
 
 import java.util.ArrayList;
 
@@ -46,5 +47,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-// Testing PR

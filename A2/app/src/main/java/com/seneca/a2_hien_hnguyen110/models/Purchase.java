@@ -1,4 +1,4 @@
-package com.seneca.a2_hien_hnguyen110;
+package com.seneca.a2_hien_hnguyen110.models;
 
 import androidx.annotation.NonNull;
 

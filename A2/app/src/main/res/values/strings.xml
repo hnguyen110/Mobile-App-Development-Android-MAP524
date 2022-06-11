@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">A2-hien-hnguyen110</string>
+    <string name="app_name">Wallet</string>
+    <string name="wallet">Wallet</string>
+    <string name="store_name">Store Name</string>
+    <string name="store_name_hint">Enter the name of the store</string>
+    <string name="purchase_amount">Purchase Amount</string>
+    <string name="purchase_amount_hint">Enter the purchase amount</string>
+    <string name="paid_status_hint">Paid Status</string>
+    <string name="submit_button_value">Submit</string>
+    <string name="show_purchases_button_value">Show Purchases</string>
+    <string name="load_dummy_data_button_value">Load Dummy Data</string>
 </resources>

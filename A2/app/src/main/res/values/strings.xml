@@ -9,4 +9,6 @@
     <string name="submit_button_value">Submit</string>
     <string name="show_purchases_button_value">Show Purchases</string>
     <string name="load_dummy_data_button_value">Load Dummy Data</string>
+    <string name="store_name_required_message">The name of the store is required</string>
+    <string name="purchase_amount_required_message">The amount of the purchase is required</string>
 </resources>

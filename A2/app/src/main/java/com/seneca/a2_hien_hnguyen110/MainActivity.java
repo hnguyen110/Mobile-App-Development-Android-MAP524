@@ -1,5 +1,6 @@
 package com.seneca.a2_hien_hnguyen110;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -44,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
             purchases.add(new Purchase("Shoppers Drug Mart", 50.35, true));
             purchases.add(new Purchase("Seneca College", 7000.75, false));
             purchases.add(new Purchase("Starbucks", 10.64, true));
+        });
+
+        binding.showPurchasesButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), ListOfPurchasesActivity.class);
+            intent.putExtra("EXTRA_PURCHASES", purchases);
+            startActivity(intent);
         });
     }
 }

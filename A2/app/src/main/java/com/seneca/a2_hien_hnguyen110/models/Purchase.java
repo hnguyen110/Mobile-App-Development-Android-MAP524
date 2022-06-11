@@ -2,7 +2,9 @@ package com.seneca.a2_hien_hnguyen110.models;
 
 import androidx.annotation.NonNull;
 
-public class Purchase {
+import java.io.Serializable;
+
+public class Purchase implements Serializable {
     private String storeName;
     private Double purchaseAmount;
     private boolean paidStatus;

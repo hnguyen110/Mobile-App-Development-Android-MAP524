@@ -3,14 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="10dp"
     tools:context=".ListOfPurchasesActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello"
+        android:text="@string/list_of_purchases"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold" />
 
+    <ListView
+        android:id="@+id/list_of_purchases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -10,7 +10,7 @@ public class Purchase {
         this.purchaseAmount = purchaseAmount;
         this.paidStatus = paidStatus;
     }
-    
+
     public String getStoreName() {
         return storeName;
     }

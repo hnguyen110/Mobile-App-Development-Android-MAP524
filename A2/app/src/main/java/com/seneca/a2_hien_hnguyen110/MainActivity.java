@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.seneca.a2_hien_hnguyen110.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    // Add the bind to the main screen
     private ActivityMainBinding binding;
 
     @Override

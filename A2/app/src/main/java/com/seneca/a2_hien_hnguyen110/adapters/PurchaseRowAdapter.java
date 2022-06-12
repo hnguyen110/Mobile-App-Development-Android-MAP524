@@ -41,4 +41,9 @@ public class PurchaseRowAdapter extends ArrayAdapter {
         binding.paidStatus.setText(String.valueOf(purchase.getPaidStatus()));
         return convertView;
     }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+    }
 }

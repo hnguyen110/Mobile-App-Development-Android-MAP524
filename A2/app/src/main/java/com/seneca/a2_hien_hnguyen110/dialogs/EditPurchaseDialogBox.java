@@ -44,10 +44,6 @@ public class EditPurchaseDialogBox extends DialogFragment {
         return builder.create();
     }
 
-    public interface EditPurchaseDelegate {
-        void updatePurchase(int index, String storeName, String purchaseAmount, boolean paidStatus);
-    }
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -56,5 +52,9 @@ public class EditPurchaseDialogBox extends DialogFragment {
         } catch (Exception exception) {
             throw new ClassCastException("The delegate method to update the purchase is not implemented");
         }
+    }
+
+    public interface EditPurchaseDelegate {
+        void updatePurchase(int index, String storeName, String purchaseAmount, boolean paidStatus);
     }
 }

@@ -3,6 +3,7 @@ package com.seneca.a2_hien_hnguyen110;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.errorMessage.setText("");
                 Purchase purchase = new Purchase(storeName, Double.valueOf(purchaseAmount), paidStatus);
                 purchases.add(purchase);
+                Toast.makeText(getApplicationContext(), R.string.purchase_record_created_successfully_message, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             purchases.add(new Purchase("Shoppers Drug Mart", 50.35, true));
             purchases.add(new Purchase("Seneca College", 7000.75, false));
             purchases.add(new Purchase("Starbucks", 10.64, true));
+            Toast.makeText(getApplicationContext(), R.string.purchase_records_populated_successfully_message, Toast.LENGTH_SHORT).show();
         });
 
         binding.showPurchasesButton.setOnClickListener(view -> {

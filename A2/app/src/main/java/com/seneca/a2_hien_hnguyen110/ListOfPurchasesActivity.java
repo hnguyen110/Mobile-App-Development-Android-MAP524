@@ -2,6 +2,7 @@ package com.seneca.a2_hien_hnguyen110;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,10 +41,17 @@ public class ListOfPurchasesActivity extends AppCompatActivity implements EditPu
     @Override
     public void updatePurchase(int index, String storeName, String purchaseAmount, boolean paidStatus) {
         Purchase purchase = purchases.get(index);
-        purchase.setStoreName(storeName);
-        purchase.setPurchaseAmount(Double.valueOf(purchaseAmount));
-        purchase.setPaidStatus(paidStatus);
-        purchases.set(index, purchase);
-        adapter.notifyDataSetChanged();
+        if (storeName.isEmpty()) {
+            Toast.makeText(getApplicationContext(), R.string.store_name_required_message, Toast.LENGTH_SHORT).show();
+        } else if (purchaseAmount.isEmpty()) {
+            Toast.makeText(getApplicationContext(), R.string.purchase_amount_required_message, Toast.LENGTH_SHORT).show();
+        } else {
+            purchase.setStoreName(storeName);
+            purchase.setPurchaseAmount(Double.valueOf(purchaseAmount));
+            purchase.setPaidStatus(paidStatus);
+            purchases.set(index, purchase);
+            adapter.notifyDataSetChanged();
+            Toast.makeText(getApplicationContext(), R.string.purchase_record_updated_successfully_message, Toast.LENGTH_SHORT).show();
+        }
     }
 }

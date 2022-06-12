@@ -14,6 +14,6 @@
     <string name="purchase_record_updated_successfully_message">The purchase has been successfully updated</string>
     <string name="purchase_record_created_successfully_message">The purchase has been successfully created</string>
     <string name="purchase_records_populated_successfully_message">The list of purchases has been populated with five records of Purchase</string>
-    <string name="list_of_purchases">Purchases</string>
+    <string name="list_of_purchases">List Of Purchases</string>
     <string name="update_purchase">Update Purchase</string>
 </resources>

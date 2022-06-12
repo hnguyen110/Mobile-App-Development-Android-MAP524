@@ -13,6 +13,7 @@ import com.seneca.a2_hien_hnguyen110.R;
 import com.seneca.a2_hien_hnguyen110.databinding.PurchaseRowLayoutBinding;
 import com.seneca.a2_hien_hnguyen110.models.Purchase;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class PurchaseRowAdapter extends ArrayAdapter {
@@ -37,8 +38,8 @@ public class PurchaseRowAdapter extends ArrayAdapter {
         Purchase purchase = purchases.get(position);
         PurchaseRowLayoutBinding binding = PurchaseRowLayoutBinding.bind(convertView);
         binding.storeName.setText(purchase.getStoreName());
-        binding.purchaseAmount.setText(String.valueOf(purchase.getPurchaseAmount()));
-        binding.paidStatus.setText(String.valueOf(purchase.getPaidStatus()));
+        binding.purchaseAmount.setText(String.format("$%s", new DecimalFormat("0.00").format(purchase.getPurchaseAmount())));
+        binding.paidStatus.setText(purchase.getPaidStatus() ? "Paid Transaction" : "Unpaid Transaction");
         return convertView;
     }
 

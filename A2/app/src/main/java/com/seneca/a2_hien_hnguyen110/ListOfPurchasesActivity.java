@@ -13,7 +13,8 @@ import com.seneca.a2_hien_hnguyen110.models.Purchase;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ListOfPurchasesActivity extends AppCompatActivity {
+public class ListOfPurchasesActivity extends AppCompatActivity implements EditPurchaseDialogBox.EditPurchaseDelegate {
+    private ArrayList<Purchase> purchases;
     private ActivityListOfPurchasesBinding binding;
 
     @Override
@@ -25,13 +26,18 @@ public class ListOfPurchasesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             Serializable serializablePurchases = intent.getSerializableExtra("EXTRA_PURCHASES");
-            ArrayList<Purchase> purchases = (ArrayList<Purchase>) serializablePurchases;
+            purchases = (ArrayList<Purchase>) serializablePurchases;
             PurchaseRowAdapter adapter = new PurchaseRowAdapter(this, purchases);
             binding.listOfPurchases.setAdapter(adapter);
             binding.listOfPurchases.setOnItemClickListener((adapterView, view, i, l) -> {
-                EditPurchaseDialogBox dialog = new EditPurchaseDialogBox();
+                EditPurchaseDialogBox dialog = new EditPurchaseDialogBox(purchases.get(i));
                 dialog.show(getSupportFragmentManager(), "Edit Purchase Dialog");
             });
         }
+    }
+
+    @Override
+    public void updatePurchase(Purchase purchase) {
+        
     }
 }

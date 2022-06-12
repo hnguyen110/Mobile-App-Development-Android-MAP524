@@ -39,16 +39,12 @@ public class ListOfPurchasesActivity extends AppCompatActivity implements EditPu
     }
 
     @Override
-    public void updatePurchase(int index, String storeName, String purchaseAmount, boolean paidStatus) {
-        Purchase purchase = purchases.get(index);
-        if (storeName.isEmpty()) {
+    public void updatePurchase(int index, Purchase purchase) {
+        if (purchase.getStoreName() == null) {
             Toast.makeText(getApplicationContext(), R.string.store_name_required_message, Toast.LENGTH_SHORT).show();
-        } else if (purchaseAmount.isEmpty()) {
+        } else if (purchase.getPurchaseAmount() == null) {
             Toast.makeText(getApplicationContext(), R.string.purchase_amount_required_message, Toast.LENGTH_SHORT).show();
         } else {
-            purchase.setStoreName(storeName);
-            purchase.setPurchaseAmount(Double.valueOf(purchaseAmount));
-            purchase.setPaidStatus(paidStatus);
             purchases.set(index, purchase);
             adapter.notifyDataSetChanged();
             Toast.makeText(getApplicationContext(), R.string.purchase_record_updated_successfully_message, Toast.LENGTH_SHORT).show();

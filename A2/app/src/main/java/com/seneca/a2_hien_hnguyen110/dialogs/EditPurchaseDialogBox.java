@@ -39,7 +39,7 @@ public class EditPurchaseDialogBox extends DialogFragment {
             String storeName = binding.storeName.getText().toString();
             String purchaseAmount = binding.purchaseAmount.getText().toString();
             boolean paidStatus = binding.paidStatus.isChecked();
-            delegate.updatePurchase(index, storeName, purchaseAmount, paidStatus);
+            delegate.updatePurchase(index, new Purchase(storeName, purchaseAmount, paidStatus));
         });
         return builder.create();
     }
@@ -55,6 +55,6 @@ public class EditPurchaseDialogBox extends DialogFragment {
     }
 
     public interface EditPurchaseDelegate {
-        void updatePurchase(int index, String storeName, String purchaseAmount, boolean paidStatus);
+        void updatePurchase(int index, Purchase purchase);
     }
 }

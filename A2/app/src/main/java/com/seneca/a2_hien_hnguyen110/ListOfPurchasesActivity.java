@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.seneca.a2_hien_hnguyen110.adapters.PurchaseRowAdapter;
 import com.seneca.a2_hien_hnguyen110.databinding.ActivityListOfPurchasesBinding;
+import com.seneca.a2_hien_hnguyen110.dialogs.EditPurchaseDialogBox;
 import com.seneca.a2_hien_hnguyen110.models.Purchase;
 
 import java.io.Serializable;
@@ -28,6 +29,8 @@ public class ListOfPurchasesActivity extends AppCompatActivity {
             PurchaseRowAdapter adapter = new PurchaseRowAdapter(this, purchases);
             binding.listOfPurchases.setAdapter(adapter);
             binding.listOfPurchases.setOnItemClickListener((adapterView, view, i, l) -> {
+                EditPurchaseDialogBox dialog = new EditPurchaseDialogBox();
+                dialog.show(getSupportFragmentManager(), "Edit Purchase Dialog");
             });
         }
     }

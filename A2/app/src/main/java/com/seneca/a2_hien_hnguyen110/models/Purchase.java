@@ -18,13 +18,17 @@ public class Purchase implements Serializable {
     public Purchase(String storeName, String purchaseAmount, boolean paidStatus) {
         if (storeName.isEmpty()) {
             this.storeName = null;
-        } else if (purchaseAmount.isEmpty()) {
-            this.purchaseAmount = null;
         } else {
             this.storeName = storeName;
-            this.purchaseAmount = Double.valueOf(purchaseAmount);
-            this.paidStatus = paidStatus;
         }
+
+        if (purchaseAmount.isEmpty()) {
+            this.purchaseAmount = null;
+        } else {
+            this.purchaseAmount = Double.valueOf(purchaseAmount);
+        }
+
+        this.paidStatus = paidStatus;
     }
 
     public String getStoreName() {

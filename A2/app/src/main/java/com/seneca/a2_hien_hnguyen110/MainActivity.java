@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 binding.errorMessage.setVisibility(View.GONE);
                 binding.errorMessage.setText("");
+                binding.storeName.setText("");
+                binding.purchaseAmount.setText("");
+                binding.paidStatus.setChecked(false);
                 Purchase purchase = new Purchase(storeName, Double.valueOf(purchaseAmount), paidStatus);
                 purchases.add(purchase);
                 Toast.makeText(getApplicationContext(), R.string.purchase_record_created_successfully_message, Toast.LENGTH_SHORT).show();

@@ -16,9 +16,11 @@ import com.seneca.a2_hien_hnguyen110.models.Purchase;
 public class EditPurchaseDialogBox extends DialogFragment {
     private EditPurchaseDelegate delegate;
     private EditPurchaseDialogLayoutBinding binding;
+    private int index;
     private Purchase purchase;
 
-    public EditPurchaseDialogBox(Purchase purchase) {
+    public EditPurchaseDialogBox(int index, Purchase purchase) {
+        this.index = index;
         this.purchase = purchase;
     }
 
@@ -26,19 +28,24 @@ public class EditPurchaseDialogBox extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         binding = EditPurchaseDialogLayoutBinding.inflate(LayoutInflater.from(getContext()));
+        binding.storeName.setText(purchase.getStoreName());
+        binding.purchaseAmount.setText(String.valueOf(purchase.getPurchaseAmount()));
+        binding.paidStatus.setChecked(purchase.getPaidStatus());
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(binding.getRoot());
         builder.setNegativeButton("Cancel", (dialogInterface, i) -> {
-
         });
         builder.setPositiveButton("Update", (dialogInterface, i) -> {
-            delegate.updatePurchase(purchase);
+            String storeName = binding.storeName.getText().toString();
+            String purchaseAmount = binding.purchaseAmount.getText().toString();
+            boolean paidStatus = binding.paidStatus.isChecked();
+            delegate.updatePurchase(index, storeName, purchaseAmount, paidStatus);
         });
         return builder.create();
     }
 
     public interface EditPurchaseDelegate {
-        public void updatePurchase(Purchase purchase);
+        void updatePurchase(int index, String storeName, String purchaseAmount, boolean paidStatus);
     }
 
     @Override

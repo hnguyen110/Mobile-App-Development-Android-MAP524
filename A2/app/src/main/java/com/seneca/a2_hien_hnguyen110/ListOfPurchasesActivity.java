@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class ListOfPurchasesActivity extends AppCompatActivity implements EditPurchaseDialogBox.EditPurchaseDelegate {
     private ArrayList<Purchase> purchases;
     private ActivityListOfPurchasesBinding binding;
+    private PurchaseRowAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +28,22 @@ public class ListOfPurchasesActivity extends AppCompatActivity implements EditPu
         if (intent != null) {
             Serializable serializablePurchases = intent.getSerializableExtra("EXTRA_PURCHASES");
             purchases = (ArrayList<Purchase>) serializablePurchases;
-            PurchaseRowAdapter adapter = new PurchaseRowAdapter(this, purchases);
+            adapter = new PurchaseRowAdapter(this, purchases);
             binding.listOfPurchases.setAdapter(adapter);
             binding.listOfPurchases.setOnItemClickListener((adapterView, view, i, l) -> {
-                EditPurchaseDialogBox dialog = new EditPurchaseDialogBox(purchases.get(i));
+                EditPurchaseDialogBox dialog = new EditPurchaseDialogBox(i, purchases.get(i));
                 dialog.show(getSupportFragmentManager(), "Edit Purchase Dialog");
             });
         }
     }
 
     @Override
-    public void updatePurchase(Purchase purchase) {
-        
+    public void updatePurchase(int index, String storeName, String purchaseAmount, boolean paidStatus) {
+        Purchase purchase = purchases.get(index);
+        purchase.setStoreName(storeName);
+        purchase.setPurchaseAmount(Double.valueOf(purchaseAmount));
+        purchase.setPaidStatus(paidStatus);
+        purchases.set(index, purchase);
+        adapter.notifyDataSetChanged();
     }
 }

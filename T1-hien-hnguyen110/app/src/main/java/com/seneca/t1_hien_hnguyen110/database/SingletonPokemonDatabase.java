@@ -1,12 +1,14 @@
 package com.seneca.t1_hien_hnguyen110.database;
 
+import android.content.SharedPreferences;
+
 import com.seneca.t1_hien_hnguyen110.models.Pokemon;
 
 import java.util.ArrayList;
 
 public class SingletonPokemonDatabase {
     private static SingletonPokemonDatabase instance = null;
-    private ArrayList<Pokemon> pokemons = new ArrayList<>();
+    private ArrayList<Pokemon> pokemonList = new ArrayList<>();
 
     private SingletonPokemonDatabase() {
         loadPokemonDataSet();
@@ -21,7 +23,7 @@ public class SingletonPokemonDatabase {
 
     public Pokemon getPokemonById(int pokedexNumber) {
         Pokemon pokemon = null;
-        for (Pokemon record : pokemons) {
+        for (Pokemon record : pokemonList) {
             if (record.getPokeIndex() == pokedexNumber) {
                 pokemon = record;
                 break;
@@ -31,9 +33,21 @@ public class SingletonPokemonDatabase {
     }
 
     private void loadPokemonDataSet() {
-        this.pokemons.add(new Pokemon(12, "Caterpie"));
-        this.pokemons.add(new Pokemon(19, "Rattata"));
-        this.pokemons.add(new Pokemon(25, "Pikachu"));
-        this.pokemons.add(new Pokemon(147, "Dratini"));
+        this.pokemonList.add(new Pokemon(12, "Caterpie"));
+        this.pokemonList.add(new Pokemon(19, "Rattata"));
+        this.pokemonList.add(new Pokemon(25, "Pikachu"));
+        this.pokemonList.add(new Pokemon(147, "Dratini"));
+    }
+
+    public static void setInstance(SingletonPokemonDatabase instance) {
+        SingletonPokemonDatabase.instance = instance;
+    }
+
+    public ArrayList<Pokemon> getPokemonList() {
+        return pokemonList;
+    }
+
+    public void setPokemonList(ArrayList<Pokemon> pokemonList) {
+        this.pokemonList = pokemonList;
     }
 }

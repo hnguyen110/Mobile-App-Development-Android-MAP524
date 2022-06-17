@@ -6,7 +6,7 @@
     android:layout_marginVertical="5dp"
     android:orientation="vertical"
     android:paddingHorizontal="10dp"
-    tools:context=".MainActivity">
+    tools:context=".views.MainActivity">
 
     <ListView
         android:id="@+id/pokemonList"

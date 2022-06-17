@@ -22,7 +22,7 @@ public class SingletonPokemonDatabase {
     public Pokemon getPokemonById(int pokedexNumber) {
         Pokemon pokemon = null;
         for (Pokemon record : pokemons) {
-            if (record.getPokedex() == pokedexNumber) {
+            if (record.getPokeIndex() == pokedexNumber) {
                 pokemon = record;
                 break;
             }

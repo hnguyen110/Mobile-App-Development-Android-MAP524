@@ -1,22 +1,22 @@
 package com.seneca.t1_hien_hnguyen110.models;
 
 public class Pokemon {
-    private int pokedex;
+    private int pokeIndex;
     private String name;
     private int wins = 0;
     private int losses = 0;
 
-    public Pokemon(int pokedex, String name) {
-        this.pokedex = pokedex;
+    public Pokemon(int pokeIndex, String name) {
+        this.pokeIndex = pokeIndex;
         this.name = name;
     }
 
-    public int getPokedex() {
-        return pokedex;
+    public int getPokeIndex() {
+        return pokeIndex;
     }
 
-    public void setPokedex(int pokedex) {
-        this.pokedex = pokedex;
+    public void setPokeIndex(int pokeIndex) {
+        this.pokeIndex = pokeIndex;
     }
 
     public String getName() {

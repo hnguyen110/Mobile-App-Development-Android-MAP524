@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3029093424479167" />
         <entry key="app/src/main/res/layout/activity_pokemon_details.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/pokemon_row_layout.xml" value="0.253125" />
+        <entry key="app/src/main/res/menu/pokemon_details_options_menu.xml" value="0.253125" />
       </map>
     </option>
   </component>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">T1-hien-hnguyen110</string>
+    <string name="set_as_favourite_option_label">Set as Favourite</string>
+    <string name="reset_option_label">Reset</string>
 </resources>

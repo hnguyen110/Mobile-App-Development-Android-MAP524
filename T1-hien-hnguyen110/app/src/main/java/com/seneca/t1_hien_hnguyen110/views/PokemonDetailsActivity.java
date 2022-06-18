@@ -48,6 +48,7 @@ public class PokemonDetailsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.setAsFavouriteOption:
+                setAsFavourite();
                 return true;
             case R.id.resetOption:
                 reset();
@@ -65,6 +66,16 @@ public class PokemonDetailsActivity extends AppCompatActivity {
             pokemon.setLosses(0);
             SharedPreferences.Editor editor = favouriteSharedPreferences.edit();
             editor.remove(String.format("KEY_%d", pokemon.getPokeIndex()));
+            editor.apply();
+        }
+    }
+
+    @SuppressLint("DefaultLocale")
+    private void setAsFavourite() {
+        Pokemon pokemon = database.getPokemonById(pokeIndex);
+        if (pokemon != null) {
+            SharedPreferences.Editor editor = favouriteSharedPreferences.edit();
+            editor.putBoolean(String.format("KEY_%d", pokemon.getPokeIndex()), true);
             editor.apply();
         }
     }

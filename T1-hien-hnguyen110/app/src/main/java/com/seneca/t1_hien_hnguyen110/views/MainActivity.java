@@ -13,10 +13,10 @@ import com.seneca.t1_hien_hnguyen110.databinding.ActivityMainBinding;
 import com.seneca.t1_hien_hnguyen110.models.Pokemon;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
-    private SharedPreferences favouriteSharedPreferences;
-    private SingletonPokemonDatabase database;
-    private PokemonRowAdapter adapter;
+    private ActivityMainBinding binding = null;
+    private SharedPreferences favouriteSharedPreferences = null;
+    private SingletonPokemonDatabase database = null;
+    private PokemonRowAdapter adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +34,11 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("EXTRA_POKEMON_INDEX", pokemon.getPokeIndex());
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        adapter.notifyDataSetChanged();
     }
 }

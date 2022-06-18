@@ -21,8 +21,9 @@ public class PokemonDetailsActivity extends AppCompatActivity {
     private ActivityPokemonDetailsBinding binding;
     private SharedPreferences favouriteSharedPreferences;
     private SingletonPokemonDatabase database;
-    private int pokeIndex;
+    private Pokemon pokemon = null;
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,12 @@ public class PokemonDetailsActivity extends AppCompatActivity {
         if (intent != null) {
             favouriteSharedPreferences = getSharedPreferences("favouriteSharedPreferences", Context.MODE_PRIVATE);
             database = SingletonPokemonDatabase.getInstance();
-            pokeIndex = intent.getIntExtra("EXTRA_POKEMON_INDEX", -1);
+            int index = intent.getIntExtra("EXTRA_POKEMON_INDEX", -1);
+            pokemon = database.getPokemonById(index);
+            binding.name.setText(String.format("Name: %s", pokemon.getName()));
+            binding.pokeIndex.setText(String.format("Pokedex Number: %d", pokemon.getPokeIndex()));
+            int image = getResources().getIdentifier(pokemon.getName().toLowerCase(), "drawable", getPackageName());
+            binding.image.setImageResource(image);
         }
     }
 
@@ -60,7 +66,6 @@ public class PokemonDetailsActivity extends AppCompatActivity {
 
     @SuppressLint("DefaultLocale")
     private void reset() {
-        Pokemon pokemon = database.getPokemonById(pokeIndex);
         if (pokemon != null) {
             pokemon.setWins(0);
             pokemon.setLosses(0);
@@ -72,7 +77,6 @@ public class PokemonDetailsActivity extends AppCompatActivity {
 
     @SuppressLint("DefaultLocale")
     private void setAsFavourite() {
-        Pokemon pokemon = database.getPokemonById(pokeIndex);
         if (pokemon != null) {
             SharedPreferences.Editor editor = favouriteSharedPreferences.edit();
             editor.putBoolean(String.format("KEY_%d", pokemon.getPokeIndex()), true);

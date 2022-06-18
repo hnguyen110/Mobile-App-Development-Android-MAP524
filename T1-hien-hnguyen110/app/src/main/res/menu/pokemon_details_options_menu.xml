@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/setAsFavouriteOption"
+        android:title="@string/set_as_favourite_option_label" />
+    <item
+        android:id="@+id/resetOption"
+        android:title="@string/reset_option_label" />
+</menu>

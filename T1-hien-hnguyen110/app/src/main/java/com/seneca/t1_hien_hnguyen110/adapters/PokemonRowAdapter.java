@@ -40,10 +40,12 @@ public class PokemonRowAdapter extends ArrayAdapter {
         Pokemon pokemon = pokemonList.get(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.pokemon_row_layout, parent, false);
-            boolean isFavourite = sharedPreferences.getBoolean(String.format("%d", pokemon.getPokeIndex()), false);
-            if (isFavourite) {
-                convertView.setBackgroundColor(Color.YELLOW);
-            }
+        }
+        boolean isFavourite = sharedPreferences.getBoolean(String.format("KEY_%d", pokemon.getPokeIndex()), false);
+        if (isFavourite) {
+            convertView.setBackgroundColor(Color.YELLOW);
+        } else {
+            convertView.setBackgroundColor(Color.WHITE);
         }
         PokemonRowLayoutBinding binding = PokemonRowLayoutBinding.bind(convertView);
         binding.name.setText(pokemon.getName());

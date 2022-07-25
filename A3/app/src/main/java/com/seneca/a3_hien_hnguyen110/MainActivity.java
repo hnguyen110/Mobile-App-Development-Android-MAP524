@@ -2,15 +2,18 @@ package com.seneca.a3_hien_hnguyen110;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.seneca.a3_hien_hnguyen110.databinding.ActivityMainBinding;
 import com.seneca.a3_hien_hnguyen110.models.Data;
-import com.seneca.a3_hien_hnguyen110.models.Equipment;
 import com.seneca.a3_hien_hnguyen110.network.Api;
 import com.seneca.a3_hien_hnguyen110.network.ApiClient;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,7 +21,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-    private Api api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        api = ApiClient.getInstance().getApi();
+        Api api = ApiClient.getInstance().getApi();
         Call<Data> request = api.getEquipments();
         request.enqueue(new Callback<Data>() {
             @Override
@@ -37,9 +39,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Data data = response.body();
                 if (data != null) {
-                    for (String location : data.getAllLocations()) {
-                        Log.d("LOCATION", location);
-                    }
+                    ArrayList<String> locations = new ArrayList<>();
+                    locations.add("Choose a location");
+                    locations.addAll(Arrays.asList(data.getAllLocations()));
+                    ArrayAdapter<String> locationAdapter = new ArrayAdapter<>(
+                            MainActivity.this,
+                            android.R.layout.simple_spinner_item,
+                            locations
+                    );
+                    binding.locations.setAdapter(locationAdapter);
                 }
             }
 

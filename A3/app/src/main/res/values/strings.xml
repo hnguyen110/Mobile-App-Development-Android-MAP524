@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">A3-hien-hnguyen110</string>
+    <string name="item_name_hint">Enter a keyword</string>
+    <string name="search_button_label">Search</string>
+</resources>

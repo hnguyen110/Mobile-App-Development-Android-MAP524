@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Data data = response.body();
                 if (data != null) {
-                    
+
                 }
             }
 

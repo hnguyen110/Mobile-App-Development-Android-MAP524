@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../Library/Android/sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2882593790690104" />
+        <entry key="app/src/main/res/layout/equipment_row.xml" value="0.4057647705078125" />
       </map>
     </option>
   </component>

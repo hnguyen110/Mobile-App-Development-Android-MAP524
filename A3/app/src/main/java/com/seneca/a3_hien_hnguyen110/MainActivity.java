@@ -27,13 +27,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
-    EquipmentAdapter equipmentAdapter;
-    private Data data;
-    private ArrayList<Equipment> equipments = new ArrayList<>();
+    private final ArrayList<Equipment> equipments = new ArrayList<>();
     private final ArrayList<String> locations = new ArrayList<>();
+    EquipmentAdapter equipmentAdapter;
+    private ActivityMainBinding binding;
+    private Data data;
 
-
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     locations.addAll(Arrays.asList(data.getAllLocations()));
                     ArrayAdapter<String> locationAdapter = new ArrayAdapter<>(
                             getApplicationContext(),
-                            android.R.layout.simple_spinner_item,
+                            R.layout.spinner_row,
                             locations
                     );
                     binding.locations.setAdapter(locationAdapter);
@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.locations.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 equipments.clear();
@@ -85,8 +84,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
+        });
+
+        binding.searchButton.setOnClickListener(view -> {
+            String query = binding.itemName.getText().toString();
+            equipments.clear();
+            if (!query.equals("")) {
+                equipments.addAll(data.getDataByName(query));
+                binding.itemName.setText("");
+            }
+            equipmentAdapter.notifyDataSetChanged();
         });
     }
 }

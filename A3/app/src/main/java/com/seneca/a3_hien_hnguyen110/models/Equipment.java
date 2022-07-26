@@ -42,7 +42,7 @@ public class Equipment {
         return defense;
     }
 
-    public String[] getCommon_locations() {
+    public String[] getCommonLocations() {
         return common_locations;
     }
 

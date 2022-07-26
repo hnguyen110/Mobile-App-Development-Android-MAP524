@@ -6,7 +6,10 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.seneca.a3_hien_hnguyen110.adapters.EquipmentAdapter;
 import com.seneca.a3_hien_hnguyen110.databinding.ActivityMainBinding;
 import com.seneca.a3_hien_hnguyen110.models.Data;
 import com.seneca.a3_hien_hnguyen110.network.Api;
@@ -48,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
                             locations
                     );
                     binding.locations.setAdapter(locationAdapter);
+                    EquipmentAdapter equipmentAdapter = new EquipmentAdapter(MainActivity.this, data.getData());
+                    binding.results.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                    binding.results.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+                    binding.results.setAdapter(equipmentAdapter);
                 }
             }
 

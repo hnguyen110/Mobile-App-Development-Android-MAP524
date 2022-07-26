@@ -2,11 +2,12 @@ package com.seneca.a3_hien_hnguyen110.models;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
 public class Data {
-    private Equipment[] data;
+    private ArrayList<Equipment> data;
     private String[] locations;
 
     public String[] getAllLocations() {
@@ -23,15 +24,7 @@ public class Data {
         return locations;
     }
 
-    public Equipment[] getData() {
+    public ArrayList<Equipment> getData() {
         return data;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "Data{" +
-                "data=" + Arrays.toString(data) +
-                '}';
     }
 }

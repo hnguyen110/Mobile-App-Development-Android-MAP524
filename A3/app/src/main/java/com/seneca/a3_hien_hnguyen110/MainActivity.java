@@ -1,7 +1,10 @@
 package com.seneca.a3_hien_hnguyen110;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.seneca.a3_hien_hnguyen110.adapters.EquipmentAdapter;
 import com.seneca.a3_hien_hnguyen110.databinding.ActivityMainBinding;
 import com.seneca.a3_hien_hnguyen110.models.Data;
+import com.seneca.a3_hien_hnguyen110.models.Equipment;
 import com.seneca.a3_hien_hnguyen110.network.Api;
 import com.seneca.a3_hien_hnguyen110.network.ApiClient;
 
@@ -24,6 +28,11 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    EquipmentAdapter equipmentAdapter;
+    private Data data;
+    private ArrayList<Equipment> equipments = new ArrayList<>();
+    private final ArrayList<String> locations = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +49,19 @@ public class MainActivity extends AppCompatActivity {
                 if (!response.isSuccessful()) {
                     Log.d("API Response", response.message());
                 }
-                Data data = response.body();
+                data = response.body();
                 if (data != null) {
-                    ArrayList<String> locations = new ArrayList<>();
                     locations.add("Choose a location");
                     locations.addAll(Arrays.asList(data.getAllLocations()));
                     ArrayAdapter<String> locationAdapter = new ArrayAdapter<>(
-                            MainActivity.this,
+                            getApplicationContext(),
                             android.R.layout.simple_spinner_item,
                             locations
                     );
                     binding.locations.setAdapter(locationAdapter);
-                    EquipmentAdapter equipmentAdapter = new EquipmentAdapter(MainActivity.this, data.getData());
-                    binding.results.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                    equipments.addAll(data.getData());
+                    equipmentAdapter = new EquipmentAdapter(getApplicationContext(), equipments);
+                    binding.results.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     binding.results.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
                     binding.results.setAdapter(equipmentAdapter);
                 }
@@ -62,6 +71,21 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(@NonNull Call<Data> call, @NonNull Throwable t) {
                 Log.d("API Request", "Failed to request the equipment data");
                 Log.d("API Request Error Message", t.getMessage());
+            }
+        });
+
+        binding.locations.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                equipments.clear();
+                equipments.addAll(data.getDataByLocation(locations.get(i)));
+                equipmentAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }

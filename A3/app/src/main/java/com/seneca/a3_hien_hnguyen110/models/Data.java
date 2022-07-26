@@ -22,6 +22,18 @@ public class Data {
         return locations;
     }
 
+    public ArrayList<Equipment> getDataByLocation(String location) {
+        ArrayList<Equipment> equipments = new ArrayList<>();
+        for (Equipment equipment : data) {
+            if (equipment.getCommonLocations() != null) {
+                if (Arrays.asList(equipment.getCommonLocations()).contains(location)) {
+                    equipments.add(equipment);
+                }
+            }
+        }
+        return equipments;
+    }
+
     public ArrayList<Equipment> getData() {
         return data;
     }

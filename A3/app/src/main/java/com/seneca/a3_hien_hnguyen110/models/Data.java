@@ -34,6 +34,19 @@ public class Data {
         return equipments;
     }
 
+    public ArrayList<Equipment> getDataByName(String name) {
+        ArrayList<Equipment> equipments = new ArrayList<>();
+        for (Equipment equipment : data) {
+            if (equipment.getName() != null) {
+                String equipmentName = equipment.getName();
+                if (equipmentName.toLowerCase().contains(name.toLowerCase())) {
+                    equipments.add(equipment);
+                }
+            }
+        }
+        return equipments;
+    }
+
     public ArrayList<Equipment> getData() {
         return data;
     }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/now_playing_icon"
+        android:id="@+id/nowPlayingFragment"
+        android:title="@string/now_playing_option_label" />
+    <item
+        android:icon="@drawable/purchase_icon"
+        android:id="@+id/ticketsFragment"
+        android:title="@string/my_ticket_option_label" />
+</menu>

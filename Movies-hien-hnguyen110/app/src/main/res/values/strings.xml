@@ -6,4 +6,6 @@
     </string>
     <string name="plot_summary_label">Plot Summary</string>
     <string name="buy_ticket_button_label">buy a ticket</string>
+    <string name="my_ticket_option_label">My Tickets</string>
+    <string name="now_playing_option_label">Now Playing</string>
 </resources>

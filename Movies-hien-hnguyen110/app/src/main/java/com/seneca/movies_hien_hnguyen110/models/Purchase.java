@@ -1,9 +1,26 @@
 package com.seneca.movies_hien_hnguyen110.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "purchase")
 public class Purchase {
+    @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @ColumnInfo(name = "title")
     private String title;
+
+    @ColumnInfo(name = "quantity")
     private int quantity;
+
+    public Purchase() {}
+
+    public Purchase(String title, int quantity) {
+        this.title = title;
+        this.quantity = quantity;
+    }
 
     public int getId() {
         return id;

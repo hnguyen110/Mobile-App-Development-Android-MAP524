@@ -63,7 +63,7 @@ public class MovieRowAdapter extends RecyclerView.Adapter<MovieRowAdapter.ItemVi
                     .load(String.format("https://image.tmdb.org/t/p/w500%s", currentItem.getBackdropPath()))
                     .into(itemBinding.image);
             itemBinding.title.setText(currentItem.getTitle());
-            itemBinding.rating.setText(String.format("%s%%", String.format("%f", currentItem.getVoteAverage())));
+            itemBinding.rating.setText(String.format("%s%%", String.format("%.0f", currentItem.getVoteAverage() * 10)));
             itemBinding.releaseDate.setText(String.format("Released: %s", currentItem.getReleaseDate()));
             itemBinding.overview.setText(currentItem.getOverview());
         }

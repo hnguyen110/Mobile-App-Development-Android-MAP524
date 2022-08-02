@@ -16,8 +16,8 @@ public interface PurchaseDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void createPurchase(Purchase purchase);
 
-    @Query("SELECT * FROM purchase WHERE id = :id")
-    Purchase getPurchase(int id);
+    @Query("SELECT * FROM purchase WHERE movie_id = :id")
+    Purchase getPurchaseByMovieId(int id);
 
     @Query("SELECT * FROM purchase")
     List<Purchase> getPurchases();

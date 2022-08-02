@@ -9,6 +9,9 @@ public class Purchase {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @ColumnInfo(name = "movie_id")
+    private int movie;
+
     @ColumnInfo(name = "title")
     private String title;
 
@@ -17,7 +20,8 @@ public class Purchase {
 
     public Purchase() {}
 
-    public Purchase(String title, int quantity) {
+    public Purchase(int movie, String title, int quantity) {
+        this.movie = movie;
         this.title = title;
         this.quantity = quantity;
     }
@@ -28,6 +32,14 @@ public class Purchase {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getMovie() {
+        return movie;
+    }
+
+    public void setMovie(int movie) {
+        this.movie = movie;
     }
 
     public String getTitle() {

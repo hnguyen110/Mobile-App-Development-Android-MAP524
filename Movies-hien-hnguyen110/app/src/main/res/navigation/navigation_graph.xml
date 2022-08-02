@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/nowPlayingFragment">
+
+    <fragment
+        android:id="@+id/nowPlayingFragment"
+        android:name="com.seneca.movies_hien_hnguyen110.fragments.NowPlayingFragment"
+        android:label="now_playing_fragment"
+        tools:layout="@layout/now_playing_fragment" >
+        <action
+            android:id="@+id/action_nowPlayingFragment_to_ticketsFragment"
+            app:destination="@id/ticketsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketsFragment"
+        android:name="com.seneca.movies_hien_hnguyen110.fragments.TicketsFragment"
+        android:label="tickets_fragment"
+        tools:layout="@layout/tickets_fragment" />
+</navigation>

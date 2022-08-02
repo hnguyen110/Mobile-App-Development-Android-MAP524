@@ -1,25 +1,15 @@
 package com.seneca.movies_hien_hnguyen110.models;
 
-import androidx.annotation.NonNull;
-
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class MovieResponse {
-    private Movie[] results;
+    private ArrayList<Movie> results = new ArrayList<>();
 
-    public Movie[] getResults() {
+    public ArrayList<Movie> getResults() {
         return results;
     }
 
-    public void setResults(Movie[] results) {
+    public void setResults(ArrayList<Movie> results) {
         this.results = results;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "MovieResponse{" +
-                "results=" + Arrays.toString(results) +
-                '}';
     }
 }

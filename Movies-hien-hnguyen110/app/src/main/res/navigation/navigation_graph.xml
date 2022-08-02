@@ -9,7 +9,7 @@
         android:id="@+id/nowPlayingFragment"
         android:name="com.seneca.movies_hien_hnguyen110.fragments.NowPlayingFragment"
         android:label="now_playing_fragment"
-        tools:layout="@layout/now_playing_fragment" >
+        tools:layout="@layout/now_playing_fragment">
         <action
             android:id="@+id/action_nowPlayingFragment_to_ticketsFragment"
             app:destination="@id/ticketsFragment" />

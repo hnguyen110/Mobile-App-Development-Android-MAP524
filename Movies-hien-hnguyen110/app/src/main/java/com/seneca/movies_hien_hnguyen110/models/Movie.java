@@ -1,7 +1,5 @@
 package com.seneca.movies_hien_hnguyen110.models;
 
-import androidx.annotation.NonNull;
-
 public class Movie {
     private int id;
     private String backdrop_path;
@@ -20,19 +18,19 @@ public class Movie {
         this.id = id;
     }
 
-    public String getBackdrop_path() {
+    public String getBackdropPath() {
         return backdrop_path;
     }
 
-    public void setBackdrop_path(String backdrop_path) {
+    public void setBackdropPath(String backdrop_path) {
         this.backdrop_path = backdrop_path;
     }
 
-    public String getPoster_path() {
+    public String getPosterPath() {
         return poster_path;
     }
 
-    public void setPoster_path(String poster_path) {
+    public void setPosterPath(String poster_path) {
         this.poster_path = poster_path;
     }
 
@@ -44,27 +42,27 @@ public class Movie {
         this.title = title;
     }
 
-    public String getRelease_date() {
+    public String getReleaseDate() {
         return release_date;
     }
 
-    public void setRelease_date(String release_date) {
+    public void setReleaseDate(String release_date) {
         this.release_date = release_date;
     }
 
-    public double getVote_average() {
+    public double getVoteAverage() {
         return vote_average;
     }
 
-    public void setVote_average(double vote_average) {
+    public void setVoteAverage(double vote_average) {
         this.vote_average = vote_average;
     }
 
-    public int getVote_count() {
+    public int getVoteCount() {
         return vote_count;
     }
 
-    public void setVote_count(int vote_count) {
+    public void setVoteCount(int vote_count) {
         this.vote_count = vote_count;
     }
 
@@ -76,7 +74,6 @@ public class Movie {
         this.overview = overview;
     }
 
-    @NonNull
     @Override
     public String toString() {
         return "Movie{" +

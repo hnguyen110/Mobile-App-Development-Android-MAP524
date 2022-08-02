@@ -24,6 +24,13 @@ public class MovieRowAdapter extends RecyclerView.Adapter<MovieRowAdapter.ItemVi
         this.context = context;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    public void resetDataSet(ArrayList<Movie> items) {
+        movies.clear();
+        movies.addAll(items);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,14 +58,14 @@ public class MovieRowAdapter extends RecyclerView.Adapter<MovieRowAdapter.ItemVi
 
         @SuppressLint("DefaultLocale")
         public void bind(Context context, Movie currentItem) {
-            Glide.with(context).load(currentItem.getPoster_path()).into(itemBinding.image);
-//            itemBinding.title.setText(currentItem.getTitle());
-//            itemBinding.rating.setText(currentItem.getVote_average());
-//            String name = currentItem.getName();
-//            itemBinding.name.setText(String.format("%s%s", name.substring(0, 1).toUpperCase(), name.substring(1)));
-//            itemBinding.description.setText(currentItem.getDescription());
-//            itemBinding.attack.setText(String.format("Attack: %d", currentItem.getAttack()));
-//            itemBinding.defense.setText(String.format("Defense: %d", currentItem.getDefense()));
+            Glide
+                    .with(context)
+                    .load(String.format("https://image.tmdb.org/t/p/w500%s", currentItem.getBackdropPath()))
+                    .into(itemBinding.image);
+            itemBinding.title.setText(currentItem.getTitle());
+            itemBinding.rating.setText(String.format("%s%%", String.format("%f", currentItem.getVoteAverage())));
+            itemBinding.releaseDate.setText(String.format("Released: %s", currentItem.getReleaseDate()));
+            itemBinding.overview.setText(currentItem.getOverview());
         }
     }
 }

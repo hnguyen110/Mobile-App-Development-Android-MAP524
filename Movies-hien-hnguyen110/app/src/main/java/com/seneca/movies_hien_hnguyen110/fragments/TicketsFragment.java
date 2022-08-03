@@ -1,46 +1,57 @@
 package com.seneca.movies_hien_hnguyen110.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.seneca.movies_hien_hnguyen110.R;
+import com.seneca.movies_hien_hnguyen110.adapters.TicketRowAdapter;
+import com.seneca.movies_hien_hnguyen110.database.Database;
+import com.seneca.movies_hien_hnguyen110.databinding.TicketsFragmentBinding;
+import com.seneca.movies_hien_hnguyen110.listeners.TicketRowEventListener;
+import com.seneca.movies_hien_hnguyen110.models.Purchase;
 
-public class TicketsFragment extends Fragment {
+import java.util.ArrayList;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
+public class TicketsFragment extends Fragment implements TicketRowEventListener {
+    TicketsFragmentBinding binding;
+    TicketRowAdapter adapter;
+    Database database;
+    ArrayList<Purchase> purchases = new ArrayList<>();
 
     public TicketsFragment() {
+        super(R.layout.tickets_fragment);
     }
 
-    public static TicketsFragment newInstance(String param1, String param2) {
-        TicketsFragment fragment = new TicketsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        database = Database.getDatabase(getContext());
+        purchases.addAll(database.purchaseDAO().getPurchases());
+        binding = TicketsFragmentBinding.inflate(inflater, container, false);
+        adapter = new TicketRowAdapter(getContext(), this, purchases);
+        binding.purchases.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.purchases.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
+        binding.purchases.setAdapter(adapter);
+        return binding.getRoot();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.tickets_fragment, container, false);
+    public void onClick(Purchase purchase) {
+        database.purchaseDAO().deletePurchase(purchase);
+        purchases.remove(purchase);
+        adapter.notifyDataSetChanged();
+        Snackbar snackbar = Snackbar.make(binding.getRoot(), "Ticket Deleted", Snackbar.LENGTH_SHORT);
+        snackbar.show();
     }
 }

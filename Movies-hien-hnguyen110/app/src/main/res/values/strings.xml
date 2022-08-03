@@ -9,4 +9,5 @@
     <string name="my_ticket_option_label">My Tickets</string>
     <string name="now_playing_option_label">Now Playing</string>
     <string name="tickets_fragment_label">My Tickets</string>
+    <string name="now_playing_fragment_label">Now Playing</string>
 </resources>

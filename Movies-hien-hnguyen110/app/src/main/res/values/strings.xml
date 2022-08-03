@@ -10,4 +10,5 @@
     <string name="now_playing_option_label">Now Playing</string>
     <string name="tickets_fragment_label">My Tickets</string>
     <string name="now_playing_fragment_label">Now Playing</string>
+    <string name="no_ticket_message">You do not have any tickets</string>
 </resources>

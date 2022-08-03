@@ -42,6 +42,7 @@ public class TicketsFragment extends Fragment implements TicketRowEventListener 
         binding.purchases.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.purchases.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         binding.purchases.setAdapter(adapter);
+        showEmptyMessageIfDatasetIsNull();
         return binding.getRoot();
     }
 
@@ -51,7 +52,15 @@ public class TicketsFragment extends Fragment implements TicketRowEventListener 
         database.purchaseDAO().deletePurchase(purchase);
         purchases.remove(purchase);
         adapter.notifyDataSetChanged();
+        showEmptyMessageIfDatasetIsNull();
         Snackbar snackbar = Snackbar.make(binding.getRoot(), "Ticket Deleted", Snackbar.LENGTH_SHORT);
         snackbar.show();
+    }
+
+    private void showEmptyMessageIfDatasetIsNull() {
+        if (this.purchases.isEmpty()) {
+            this.binding.purchases.setVisibility(View.GONE);
+            this.binding.emptyMessage.setVisibility(View.VISIBLE);
+        }
     }
 }

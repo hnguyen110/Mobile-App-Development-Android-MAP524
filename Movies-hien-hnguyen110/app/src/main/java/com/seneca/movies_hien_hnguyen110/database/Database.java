@@ -13,11 +13,9 @@ import java.util.concurrent.Executors;
 
 @androidx.room.Database(entities = {Purchase.class}, version = 1, exportSchema = false)
 public abstract class Database extends RoomDatabase {
-    public abstract PurchaseDAO purchaseDAO();
-
-    private static volatile Database INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    private static volatile Database INSTANCE;
 
     public static Database getDatabase(final Context context) {
         if (INSTANCE == null) {
@@ -33,4 +31,6 @@ public abstract class Database extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+    public abstract PurchaseDAO purchaseDAO();
 }

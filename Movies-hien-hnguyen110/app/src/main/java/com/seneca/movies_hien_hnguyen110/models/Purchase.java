@@ -18,7 +18,8 @@ public class Purchase {
     @ColumnInfo(name = "quantity")
     private int quantity;
 
-    public Purchase() {}
+    public Purchase() {
+    }
 
     public Purchase(int movie, String title, int quantity) {
         this.movie = movie;

@@ -20,6 +20,7 @@ import retrofit2.Response;
 
 public class MovieViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Movie>> results;
+
     public LiveData<ArrayList<Movie>> getMovies() {
         if (results == null) {
             results = new MutableLiveData<>();

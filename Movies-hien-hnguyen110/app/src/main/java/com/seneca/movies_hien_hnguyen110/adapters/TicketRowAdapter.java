@@ -25,13 +25,6 @@ public class TicketRowAdapter extends RecyclerView.Adapter<TicketRowAdapter.Item
         this.listener = listener;
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    public void resetDataSet(ArrayList<Purchase> items) {
-        purchases.clear();
-        purchases.addAll(items);
-        notifyDataSetChanged();
-    }
-
     @NonNull
     @Override
     public TicketRowAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

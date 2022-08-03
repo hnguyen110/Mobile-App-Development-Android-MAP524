@@ -6,6 +6,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/movie_row.xml" value="0.335" />
         <entry key="app/src/main/res/layout/now_playing_fragment.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/ticket_row.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/tickets_fragment.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
       </map>
     </option>

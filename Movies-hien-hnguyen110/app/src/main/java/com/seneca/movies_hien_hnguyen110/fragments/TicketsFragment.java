@@ -1,5 +1,6 @@
 package com.seneca.movies_hien_hnguyen110.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,9 @@ import java.util.ArrayList;
 
 public class TicketsFragment extends Fragment implements TicketRowEventListener {
     TicketsFragmentBinding binding;
+    TicketRowAdapter adapter;
+    Database database;
+    ArrayList<Purchase> purchases = new ArrayList<>();
 
     public TicketsFragment() {
         super(R.layout.tickets_fragment);
@@ -31,19 +35,23 @@ public class TicketsFragment extends Fragment implements TicketRowEventListener 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Database database = Database.getDatabase(getContext());
-        ArrayList<Purchase> purchases = (ArrayList<Purchase>) database.purchaseDAO().getPurchases();
+        database = Database.getDatabase(getContext());
+        purchases.addAll(database.purchaseDAO().getPurchases());
         binding = TicketsFragmentBinding.inflate(inflater, container, false);
-        TicketRowAdapter adapter = new TicketRowAdapter(getContext(), this, purchases);
+        adapter = new TicketRowAdapter(getContext(), this, purchases);
         binding.purchases.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.purchases.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         binding.purchases.setAdapter(adapter);
         return binding.getRoot();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onClick(Purchase purchase) {
-        Snackbar snackbar = Snackbar.make(binding.getRoot(), "Ticket Purchased", Snackbar.LENGTH_SHORT);
+        database.purchaseDAO().deletePurchase(purchase);
+        purchases.remove(purchase);
+        adapter.notifyDataSetChanged();
+        Snackbar snackbar = Snackbar.make(binding.getRoot(), "Ticket Deleted", Snackbar.LENGTH_SHORT);
         snackbar.show();
     }
 }

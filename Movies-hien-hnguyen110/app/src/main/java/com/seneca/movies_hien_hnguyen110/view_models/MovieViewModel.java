@@ -25,7 +25,7 @@ public class MovieViewModel extends ViewModel {
         if (results == null) {
             results = new MutableLiveData<>();
             Api api = ApiClient.getInstance().getApi();
-            Call<MovieResponse> request = api.getMovies("b4d88dec34dfb58b79d924faf1cf14c3", "en-US", "1", "CA");
+            Call<MovieResponse> request = api.getMovies("", "en-US", "1", "CA");
             request.enqueue(new Callback<MovieResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<MovieResponse> call, @NonNull Response<MovieResponse> response) {
